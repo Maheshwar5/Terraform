@@ -45,16 +45,15 @@ https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/r
 
 
 
-# Troubleshoot Commands:
 
-# terraform unlock: 
-syntax: terraform force-unlock <LockID> 
+===========================================
+# Create bucket: timing-remote-state-bucket
 
 # Creating lock in dynamo db:
 
 Table name: timing-lock
 Partition key: LockID
 
-> Create Table
-
+> Click on --> Create Table
+===========================================
 

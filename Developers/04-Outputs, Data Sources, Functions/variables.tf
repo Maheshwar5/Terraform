@@ -1,7 +1,7 @@
 variable "aws_accounts" {
     type = map
     default = {
-        "ap-south-1" = "137112412989" # Thesee are official aws Acoount ID
+        "ap-south-1" = "137112412989" # These are official aws Acoount ID
         #"ap-south-2" = "052378183071"
     }
 }
