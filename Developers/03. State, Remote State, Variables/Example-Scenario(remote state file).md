@@ -11,9 +11,9 @@ Whatever you declare, you'll get that infra
 Whenver terraform creates infra, it generates file called terraform.tfstate
 
 To track what terraform has created, the status
-'''
+```
 terraform.tfstate
-'''
+```
 
 TF files => whatever we want = Desired infra
 terraform.tfstate = Actual infra = current state of infra
@@ -145,8 +145,9 @@ Engineer2: This guy also wants to perform some activities...
 
 But, the time he applies...
 
+```
 $ terraform apply -auto-approve
-╷
+```
 │ Error: Error acquiring the state lock
 │
 │ Error message: ConditionalCheckFailedException: The conditional request

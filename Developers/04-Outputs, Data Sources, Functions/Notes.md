@@ -2,13 +2,13 @@
 
 
 Syntax is
-'''
+```
 
 output "name_you_prefer" {
 
     value = "" 
 }
-'''
+```
 
 We're creating infrastructure, we want to see what are the outputs we can get through infra.
 

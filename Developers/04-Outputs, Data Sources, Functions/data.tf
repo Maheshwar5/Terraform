@@ -2,7 +2,8 @@ data "aws_ami" "ami_info" {
   most_recent = true
   # owners = ["137112412989"] # This is the official amazon Account ID
   # Instead of hard coding above account ID, we can do as below
-  owners = [var.aws_accounts[data.aws_region.current.name]]  
+  #owners = [var.aws_accounts[data.aws_region.current.name]]
+  owners = [lookup(var.aws_accounts,data.aws_region.current.name)]  
 
   filter {
     name   = "name"
