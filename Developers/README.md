@@ -266,3 +266,14 @@ It'll change the resource names...
 
 
 
+
+
+
+
+
+cconcepts:
+- terraform: terraform basics - working on 03 session
+- terraform-modules
+- timing-infra
+
+git: git add .; git commit -m "Message"; git push origin master
