@@ -16,12 +16,13 @@
 
 -------------------------------------------------------------------------------
 # session 02: 
-3Tier Architecture:
+* 3Tier Architecture:
 
 
 -------------------------------------------------------------------------------
 # session 03: 
-State, Remote State, Variables
+* State, Remote State, Variables
+
 
 ### State
 
@@ -249,13 +250,13 @@ It'll change the resource names...
 
 -------------------------------------------------------------------------------
 # session 04: 
-Outputs, Data Sources, Functions
+* Outputs, Data Sources, Functions
 
 
 
 -------------------------------------------------------------------------------
 # session 05: 
-Count, Conditions, Loops
+* Count, Conditions, Loops
 
 
 
