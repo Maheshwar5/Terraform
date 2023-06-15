@@ -276,4 +276,4 @@ cconcepts:
 - terraform-modules
 - timing-infra
 
-git: git add .; git commit -m "Message"; git push origin master
+Just to avoid repeat typing: git add .; git commit -m "Message"; git push origin master
