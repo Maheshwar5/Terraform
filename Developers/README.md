@@ -248,6 +248,8 @@ It'll change the resource names...
 7. List
 
 
+
+
 -------------------------------------------------------------------------------
 # session 04: 
 * Outputs, Data Sources, Functions
