@@ -1,7 +1,19 @@
 01.  Basic commands:
-Unlock the terraform state:
+===================
 
-Usage: terraform force-unlock [options] LOCK_ID
+# Unlock the terraform state:
+  Usage: terraform force-unlock [options] LOCK_ID
+
+# To skip manual approve
+  Usage: terraform apply -auto-approve
+
+
+
+
+
+
+
+
 
 -------------------------------------------------------------------------------
 02. 3Tier Architecture:
@@ -27,11 +39,31 @@ Desired Infra = Actual Infra
 
 keeping terraform.tfstate in local is a problem, 
 
-* if you lose the data then terraform can't track what happened earlier. It will try to recreate again.
+* If you lose the data then terraform can't track what happened earlier. It will try to recreate again.
+
 * In case of version control, keeping the terraform state in GitHub also causes problem while infra is creating through CICD. If multiple triggers to the pipeline then duplicate infra would be created.
+
 * It is best practice to keep the state file in remote locations like S3 for better collaboration between team members.
 
+
+* A central place, where terraform can understand actual infra: Advantages
+
+- Multiple persons should not change infra at a time, only one change is allowed. --> Lock it using DynamoDB.
+
+- Duplication and errors in terraform will be removed
+
+* Creating S3 bucket:
+- Go to buckets --> Bucket Nmae: timing-remote-state-bucket --> Bucket Versioning: Enable --> CreateBucket
+- Go to DynamoDB --> Go to Tables --> Create Table --> Table Name: timing-lock --> Partition Key: LockID --> Create Table
+
+
+
 Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
+
+
+
+
+
 
 #### Variables
 
