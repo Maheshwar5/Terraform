@@ -66,7 +66,7 @@ variable "tags" {
     Environment = "dev"
   }
 }
-```
+
 
 We use **variables.tf** file to declare variables, we can place default values here. **terraform.tfvars** is the file we declare the default values. We can override variable values from command line using -var "key=value".
 
