@@ -69,8 +69,8 @@ State, Remote State, Variables
 
 * Whenever terraform creates infra, it will create file called **terraform.tfstate**, it needs someway to track what it created, that is state file
 
-TF files = whatever we want = Desired infra
-terraform.tfstate = Actual Infra = current state of Infra
+* TF files = whatever we want = Desired infra
+* terraform.tfstate = Actual Infra = current state of Infra
 
 Terraform responsibility is to maintain
 
