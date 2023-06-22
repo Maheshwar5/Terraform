@@ -1,3 +1,5 @@
+<p>
+
 01.  Basic commands:
 
 # Unlock the terraform state:
@@ -783,8 +785,7 @@ In the above example, the file() function is used to read the contents of a YAML
 
 I hope these examples help illustrate the use of Terraform functions.
 ======================================================================
-
-
+</p>
 
 
 
