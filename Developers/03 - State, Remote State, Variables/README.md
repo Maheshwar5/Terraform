@@ -1,5 +1,6 @@
 * State:
 <br>
+
 * Terraform is a declarative way of approach. Declarative means whatever you write(declare), you will get the required resources by using proper syntax.
 
 * Whenever terraform creates infra, it will create file called **terraform.tfstate**, it needs someway to track what it created, that is state file
@@ -14,6 +15,7 @@
 
 
 * Remote State:
+<br>
 
 * keeping terraform.tfstate in local is a problem, 
 
@@ -27,6 +29,7 @@ Now where ever we run terraform apply it connects to S3 and avoid the situations
 
 
 * Variables:
+<br>
 
 * Variables are useful to define values that can be reused across many resources. A central place where a change of value can be reflected everywhere it is used.
 
@@ -62,11 +65,11 @@ variable "tags" {
 }
 ```
 
-
+<br>
 * We use **variables.tf** file to declare variables, we can place default values here. 
 * ** terraform.tfvars ** is the file we declare the default values. We can override variable values from command line using -var "key=value".
 
-
+<br>
 * Best Way:
 * Create variables.tf and terraform.tfvars
 * Place default values in variables.tf
