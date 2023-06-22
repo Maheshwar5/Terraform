@@ -13,10 +13,10 @@
 * Desired Infra = Actual Infra
 </p>
 
+<br>
 
-<p>
 * Remote State:
-
+<p>
 * keeping terraform.tfstate in local is a problem, 
 
 * if you lose the data then terraform can't track what happened earlier. It will try to recreate again.
