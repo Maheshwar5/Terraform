@@ -43,7 +43,7 @@ Datatypes of variables in terraform are
 * map
 * boolean
 
-```
+
 variable "region" {
   type = string
   default = "us-west-2"
