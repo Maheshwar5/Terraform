@@ -1,3 +1,4 @@
+```
 ### State
 
 Terraform is a declarative way of approach. Declarative means whatever you write(declare), you will get the required resources by using proper syntax.
