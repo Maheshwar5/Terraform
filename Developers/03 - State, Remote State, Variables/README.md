@@ -39,7 +39,7 @@ Now where ever we run terraform apply it connects to S3 and avoid the situations
 
 * Variables are useful to define values that can be reused across many resources. A central place where a change of value can be reflected everywhere it is used.
 
-Datatypes of variables in terraform are
+* Datatypes of variables in terraform are,
 * string
 * number
 * list
