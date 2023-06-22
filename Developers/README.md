@@ -63,7 +63,7 @@ Session 03:
 State, Remote State, Variables
 
 
-State:
+01. State:
 
 * Terraform is a declarative way of approach. Declarative means whatever you write(declare) you will get it provided you will follow proper syntax.
 
@@ -78,7 +78,7 @@ Desired Infra = Actual Infra
 
 <br>
 
-Remote State
+02. Remote State
 <p>
 
 * keeping terraform.tfstate in local is a problem, 
@@ -107,7 +107,7 @@ Creating S3 bucket:
 <br>
 
 
-Variables
+03. Variables
 <p>
 
 * Variables are useful to define values that can be reused across many resources. A central place where a change of value can be reflected everywhere it is used.
