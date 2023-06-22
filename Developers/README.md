@@ -1,81 +1,88 @@
 <p>
 
-01.  Basic commands:
+01. Basic commands:
 
-# Unlock the terraform state:
-  Usage: terraform force-unlock [options] LOCK_ID
-         terraform force-unlock LOCK_ID
+Unlock the terraform state:
+* Usage: syntax: terraform force-unlock [options] LOCK_ID
 
-# To skip manual approve
-  Usage: terraform apply -auto-approve
+```
+terraform force-unlock LOCK_ID
+```
 
-# Terraform variable values from command line:
+To skip manual approve
+* Usage: syntax: terraform apply -auto-approve
+
+
+Terraform variable values from command line:
 Reference: 
 Syntax: terraform plan -var "<VARIABLE_NAME>=<VARIABLE_VALUE>"
 Example Usage: terraform plan -var "username=Learning-Ocean"
 
 
+<br>
+<br>
+
+Session 02: 
+3Tier Architecture:
+
+<br>
+<br>
 
 
+Session 03: 
+State, Remote State, Variables
 
 
+State:
 
--------------------------------------------------------------------------------
-# session 02: 
-* 3Tier Architecture:
+* Terraform is a declarative way of approach. Declarative means whatever you write(declare) you will get it provided you will follow proper syntax.
 
+* Whenever terraform creates infra, it will create file called **terraform.tfstate**, it needs someway to track what it created, that is state file
 
--------------------------------------------------------------------------------
-# session 03: 
-* State, Remote State, Variables
-
-
-### State
-
-Terraform is a declarative way of approach. Declarative means whatever you write(declare) you will get it provided you will follow proper syntax.
-
-Whenever terraform creates infra, it will create file called **terraform.tfstate**, it needs someway to track what it created, that is state file
-
-TF files = whatever we want = Desired infra <br />
+TF files = whatever we want = Desired infra
 terraform.tfstate = Actual Infra = current state of Infra
 
 Terraform responsibility is to maintain
 
 Desired Infra = Actual Infra
 
-### Remote State
 
-keeping terraform.tfstate in local is a problem, 
+<br>
+<br>
 
+Remote State
+<p>
+
+* keeping terraform.tfstate in local is a problem, 
 * If you lose the data then terraform can't track what happened earlier. It will try to recreate again.
-
 * In case of version control, keeping the terraform state in GitHub also causes problem while infra is creating through CICD. If multiple triggers to the pipeline then duplicate infra would be created.
-
 * It is best practice to keep the state file in remote locations like S3 for better collaboration between team members.
 
 
 * A central place, where terraform can understand actual infra: Advantages
+* Multiple persons should not change infra at a time, only one change is allowed. --> Lock it using dynamoDB.
 
-- Multiple persons should not change infra at a time, only one change is allowed. --> Lock it using DynamoDB.
+* Duplication and errors in terraform will be removed
 
-- Duplication and errors in terraform will be removed
+<br>
 
-* Creating S3 bucket:
-- Go to buckets --> Bucket Nmae: timing-remote-state-bucket --> Bucket Versioning: Enable --> CreateBucket
-- Go to DynamoDB --> Go to Tables --> Create Table --> Table Name: timing-lock --> Partition Key: LockID --> Create Table
-
-
-
-Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
+Creating S3 bucket:
+* Go to buckets --> Bucket Nmae: timing-remote-state-bucket --> Bucket Versioning: Enable --> CreateBucket
+* Go to DynamoDB --> Go to Tables --> Create Table --> Table Name: timing-lock --> Partition Key: LockID --> Create Table
 
 
 
+* Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
 
 
+<br>
+<br>
 
-#### Variables
 
-Variables are useful to define values that can be reused across many resources. A central place where a change of value can be reflected everywhere it is used.
+Variables
+<p>
+
+* Variables are useful to define values that can be reused across many resources. A central place where a change of value can be reflected everywhere it is used.
 
 Datatypes of variables in terraform are
 * string
@@ -83,6 +90,7 @@ Datatypes of variables in terraform are
 * list
 * map
 * boolean
+</p>
 
 ```
 variable "region" {
@@ -109,9 +117,11 @@ variable "tags" {
 }
 ```
 
-We use **variables.tf** file to declare variables, we can place default values here. **terraform.tfvars** is the file we declare the default values. We can override variable values from command line using -var "key=value".
+* We use **variables.tf** file to declare variables, we can place default values here. **terraform.tfvars** is the file we declare the default values. We can override variable values from command line using -var "key=value".
 
-#### Best Way:
+<br>
+
+Best Way:
 * Create variables.tf and terraform.tfvars
 * Place default values in variables.tf
 * Override default values using terraform.tfvars. We usually don't commit terraform.tfvars into Git so that users can define their own values.
@@ -120,10 +130,9 @@ We use **variables.tf** file to declare variables, we can place default values h
 
 
 
-# My Notes:
+My Notes:
 
-# Variables:
-  =========
+Variables:
 
 1. If you are repeating the values in multiple places, then you need to do the change in all places if there is a modification 
 
@@ -143,63 +152,73 @@ We use **variables.tf** file to declare variables, we can place default values h
  * terraform.tfvars is to provide default values to variables
  * You can always overwrite values from command line 
 
-
+<br>
 
 Reference:
 Declaring an Input Variable
 https://developer.hashicorp.com/terraform/language/values/variables
 
+<br>
 
 Pass Variable from Command Line: https://learning-ocean.com/tutorials/terraform/terraform-pass-variable-from-cli
 
 
+```
 Syntax: terraform plan -var "<VARIABLE_NAME>=<VARIABLE_VALUE>"
+```
 
 Method1:
-$ terraform apply -var "cidr=10.0.0.0/16"
+<p>
 
+```
+$ terraform apply -var "cidr=10.0.0.0/16"
+```
+<>/p
+<br>
 
 Method2:
-Using terraform.tfvars
+<p>
+* Using terraform.tfvars
+* In terraform.tfvars file, you mention...
 
-in terraform.tfvars file, you mention...
 
-----------------------------------------
-# This file is to pass the default values 
+This file is to pass the default values 
 cidr = "10.0.0.0/16"
-----------------------------------------
 
+```
 $ terraform apply
+```
+</p>
 
-What happens when runtime is, 
-When running vpc.tf, terraform understands there is a variable,
-Then, it goes to the variable in variables.tf and it will check for the value here, if it 
-is not available here, then it'll go to the terraform.tfvars
+<br>
 
-In case if it doesn't find the value in terraform.tfvars too, then it'll ask you from the command line.
+* What happens when runtime is, 
+* When running vpc.tf, terraform understands there is a variable, then, it goes to the variable in variables.tf and it will check for the value here, if it is not available here, then it'll go to the terraform.tfvars
 
-But you can always overwrite from the command line.
+* In case if it doesn't find the value in terraform.tfvars too, then it'll ask you from the command line.
+
+* But you can always overwrite from the command line.
 
 
-
+<br>
 
 6. Merge
+<p>
 
 Merging the values.
 Refernce:   
 
-In runtime, it'll fetch all the variables related to the tags, and the 
-Name in the terraform.tfvars will be merged with the given Name from vpc.tf
+* In runtime, it'll fetch all the variables related to the tags, and the Name in the terraform.tfvars will be merged with the given Name from vpc.tf
 
------------------------------------------------------------
 
-Now, our configuration is little clean
 
-- We're maintaing the values in variables
-- Providing the default values through terraform.tfvars
-- Keeping tags in a central location, same tags will be applied for every resource
-- Tags are very important while filtering the resource
-- We're merging each resource with the centralized tags
+* Now, our configuration is little clean
+
+* We're maintaing the values in variables
+* Providing the default values through terraform.tfvars
+* Keeping tags in a central location, same tags will be applied for every resource
+* Tags are very important while filtering the resource
+* We're merging each resource with the centralized tags
 
 
 If you apply,
@@ -209,13 +228,17 @@ It'll change the resource names...
 
 
 7. List
+<p>
 
+Variables: variables.tf
+* In Terraform, variables.tf is a file used to define input variables, while terraform.tfvars is a file used to assign values to those input variables. Here's a more detailed explanation of both:
 
-### variables: variables.tf
-In Terraform, variables.tf is a file used to define input variables, while terraform.tfvars is a file used to assign values to those input variables. Here's a more detailed explanation of both:
+variables.tf: 
+* This file is used to define input variables for your Terraform project. Input variables allow you to parameterize your configuration, making it more reusable and flexible. In variables.tf, you define the variables you need, along with their data types and any constraints you want to put on them. Here's an example variables.tf file:
 
-variables.tf: This file is used to define input variables for your Terraform project. Input variables allow you to parameterize your configuration, making it more reusable and flexible. In variables.tf, you define the variables you need, along with their data types and any constraints you want to put on them. Here's an example variables.tf file:
+<p>
 
+```
 variable "instance_count" {
   type    = number
   default = 1
@@ -230,54 +253,63 @@ variable "ami" {
   type    = string
   default = "ami-0c55b159cbfafe1f0"
 }
+```
+</p>
 
+* In this example, we define three input variables: instance_count, instance_type, and ami. instance_count is a number with a default value of 1, instance_type is a string with a default value of "t2.micro", and ami is a string with a default value of "ami-0c55b159cbfafe1f0".
 
-In this example, we define three input variables: instance_count, instance_type, and ami. instance_count is a number with a default value of 1, instance_type is a string with a default value of "t2.micro", and ami is a string with a default value of "ami-0c55b159cbfafe1f0".
+<br>
 
+terraform.tfvars: terraform.tfvars
+* This file is used to assign values to the input variables defined in variables.tf. This file is not required, but it's useful because it allows you to keep your configuration separate from your variable assignments, making it easier to manage. 
 
-### terraform.tfvars: terraform.tfvars
-This file is used to assign values to the input variables defined in variables.tf. This file is not required, but it's useful because it allows you to keep your configuration separate from your variable assignments, making it easier to manage. Here's an example terraform.
+Here's an example terraform.
 
+```
 tfvars file:
 instance_count = 3
 instance_type  = "t2.small"
 ami            = "ami-0c55b159cbfafe1f0"
+```
 
 
+* In this example, we assign values to the input variables we defined in variables.tf. We set instance_count to 3, instance_type to "t2.small", and ami to "ami-0c55b159cbfafe1f0".
 
-In this example, we assign values to the input variables we defined in variables.tf. We set instance_count to 3, instance_type to "t2.small", and ami to "ami-0c55b159cbfafe1f0".
+* When we run terraform apply, Terraform will read the values from terraform.tfvars and use them to create our infrastructure. If we don't provide a value for a variable in terraform.tfvars, Terraform will use the default value specified in variables.tf. If we don't specify a default value in variables.tf, Terraform will prompt us for a value when we run terraform apply.
 
-When we run terraform apply, Terraform will read the values from terraform.tfvars and use them to create our infrastructure. If we don't provide a value for a variable in terraform.tfvars, Terraform will use the default value specified in variables.tf. If we don't specify a default value in variables.tf, Terraform will prompt us for a value when we run terraform apply.
-
-terraform.tfvars is user specific. We should gitignore it! (We shouldn't push it to Central Repository)
-
-
-
-
+* terraform.tfvars is user specific. We should gitignore it! (We shouldn't push it to Central Repository)
 
 
 
 
--------------------------------------------------------------------------------
-# session 04: 
-* Outputs, Data Sources, Functions
 
-# key-pair:
 
-# aws key pair 
+
+
+
+Session 04: 
+Outputs, Data Sources, Functions
+
+key-pair:
+
+aws key pair 
 
 Resource: aws_key_pair
 https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair
 
 
-# Public & Private key:
+<br>
+
+Public & Private key:
 * public key
 * private key
 
 public key: Atatched to instance
 private key: Use it to login. Don't push it to any Git or any repo!
 
-# To create public & private key-pair:
+<br>
+
+To create public & private key-pair:
 ```
 ssh-keygen -f terraform
 ```
@@ -310,18 +342,20 @@ resource "aws_key_pair" "deployment" {
 This `file()` is a function that can read the file and fetch the content at runtime.
 
 
-# Reference for file() function:
+Reference for file() function:
 https://developer.hashicorp.com/terraform/language/functions/file
 
 
+<br>
 
 
 
+Functions: Outputs, Data Sources, Functions 
 
-# Functions: Outputs, Data Sources, Functions 
+Outputs
+<p>
 
-### outputs
-We're creating infra and we to see what are the outputs we can get through infra.
+* We're creating infra and we to see what are the outputs we can get through infra.
 
 ```
 output "name_you_prefer" {
@@ -335,8 +369,9 @@ https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/inst
 
 
 
-# It fetch the IP Address as we've mentioned in outputs.tf
+* It fetch the IP Address as we've mentioned in outputs.tf
 output.tf:
+```
 output "ip_address" { 
   value = aws_instance.web.public_ip
 }
@@ -353,36 +388,43 @@ current_region = {
   "name" = "ap-south-1"
 }
 ip_address = "3.108.53.0" ---> public IP of EC2 instance
-=====================================================================
+```
 
+<br>
 
-### Data Sources
+Data Sources
 Syntax: 
+
 ```
 ouput "name_you_prefer" {
   value = ""
 }
 ```
 
-Data source is useful to get the information from cloud or any external provider.
+* Data source is useful to get the information from cloud or any external provider.
 To get automaically, you need to've Data Source. 
 
-Data Source: To fetch the data from the CLoud providers automatically!
+Data Source:
+* To fetch the data from the CLoud providers automatically!
 
-This information will be used as inputs for your infrastructure.
+* This information will be used as inputs for your infrastructure.
 instance
-=====================================================================
+
+<br>
 
 
-### Functions
+Functions
+<p>
 
-In Terraform, functions are used to manipulate data, perform operations on data, or transform data in some way. Functions can be used within Terraform configuration files to dynamically generate values for resources, variables, and other configuration elements.
+* In Terraform, functions are used to manipulate data, perform operations on data, or transform data in some way. Functions can be used within Terraform configuration files to dynamically generate values for resources, variables, and other configuration elements.
 
 There are several types of functions in Terraform:
 
 
 0. lookup function:
-The lookup() function in Terraform is used to retrieve the value of a specific key from a map or object. It's especially useful when working with variable maps that may not have all keys defined or may have nested values.
+<p>
+
+* The lookup() function in Terraform is used to retrieve the value of a specific key from a map or object. It's especially useful when working with variable maps that may not have all keys defined or may have nested values.
 
 The syntax for the lookup() function is as follows:
 ```
@@ -435,12 +477,10 @@ data "aws_security_group" "example" {
 
 ```
 
-In the above example, the lookup() function is used to retrieve the ip and port values from the local.servers map for each EC2 instance being created. The default argument is used to provide an empty string if the key is not found in the map.
+* In the above example, the lookup() function is used to retrieve the ip and port values from the local.servers map for each EC2 instance being created. The default argument is used to provide an empty string if the key is not found in the map.
 
-I hope this helps clarify the usage of the lookup() function in Terraform!
-
-
-
+* I hope this helps clarify the usage of the lookup() function in Terraform!
+</p>
 
 
 
@@ -744,12 +784,15 @@ resource "aws_vpc" "example" {
 In the above example, the cidrsubnet() function is used to generate four subnets within the 10.0.0.0/16 CIDR block.
 
 
-13. `format()` function: This function is used to format a string with values from other variables. The syntax is as follows:
+13. `format()` function: 
+<p>
+
+* This function is used to format a string with values from other variables. The syntax is as follows:
 
 ```
 format(formatstring, arg1, arg2, ...)
 ```
-where formatstring is the string to format, and arg1, arg2, etc. are the variables to insert into the string. 
+* where formatstring is the string to format, and arg1, arg2, etc. are the variables to insert into the string. 
 Here's an example:
 ```
 locals {
@@ -761,15 +804,18 @@ output "greeting" {
   value = format(local.message, local.name)
 }
 ```
-In the above example, the format() function is used to insert the value of local.name into the local.message string.
+* In the above example, the format() function is used to insert the value of local.name into the local.message string.
 
 
-14. `file()` function: This function is used to read the contents of a file on the local file system. The syntax is as follows:
-```
+14. `file()` function: 
+<p>
+
+* This function is used to read the contents of a file on the local file system. The syntax is as follows:
+
 file(path)
-```
 
-where path is the path to the file to read. 
+
+* where path is the path to the file to read. 
 Here's an example:
 ```
 locals {
@@ -781,10 +827,7 @@ output "config" {
 }
 ```
 
-In the above example, the file() function is used to read the contents of a YAML file in the same directory as the Terraform configuration file.
-
-I hope these examples help illustrate the use of Terraform functions.
-======================================================================
+* In the above example, the file() function is used to read the contents of a YAML file in the same directory as the Terraform configuration file.
 </p>
 
 
