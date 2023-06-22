@@ -1,5 +1,5 @@
 * State:
-
+<br>
 * Terraform is a declarative way of approach. Declarative means whatever you write(declare), you will get the required resources by using proper syntax.
 
 * Whenever terraform creates infra, it will create file called **terraform.tfstate**, it needs someway to track what it created, that is state file
