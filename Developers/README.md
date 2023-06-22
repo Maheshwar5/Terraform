@@ -23,8 +23,35 @@ Example Usage: terraform plan -var "username=Learning-Ocean"
 <br>
 <br>
 
-Session 02: 
+Session 02:
+<p>
+
 3Tier Architecture:
+
+* Project Infrastructure outline:
+* Public subnet, Private subnet, Route Table, IGW are dependent on VPC. 
+
+* Elastic IP is not dependent on any resource. 
+* NAT Gateway is dependent on Elastic IP & IGW. We publish NAT Gateway into the Public subnet.
+
+<br>
+
+Creating a VPC
+
+* This session is about creating VPC through Terraform. One should have basic knowledge of VPC.
+* Below is the dependency diagram for better understanding.
+
+* First we create VPC.
+* Create Subnets. Public and Private into the above VPC.
+* Create Internet Gateway.
+* Attach Internet Gateway to VPC.
+* Create Route Tables. Usually public and private. Route table will have automatic route of VPC.
+* Associate route tables with subnets.
+* Create EIP. Here elastic IP is independent resource.
+* Create NAT gateway. NAT gateway has explicit dependency on Internet Gateway.
+
+![alt text](vpc.jpg)
+</p>
 
 <br>
 <br>
@@ -862,11 +889,3 @@ Concepts:
 
 <br>
 <br>
-
-Just to avoid typing: 
-<p>
-
-```
-git add .; git commit -m "Message"; git push origin master
-```
-</p>
