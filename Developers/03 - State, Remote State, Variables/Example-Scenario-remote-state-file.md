@@ -64,7 +64,7 @@ Question:
 * Working on state file: Example Scenario
 * Infra team, multiple members 
 
-Every person will contribute some work, we use Git for version control
+* Every person will contribute some work, we use Git for version control
 
 Engineer - 1
 * He cloned repo
