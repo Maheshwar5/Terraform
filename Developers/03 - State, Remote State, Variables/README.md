@@ -12,9 +12,10 @@ Terraform responsibility is to maintain
 Desired Infra = Actual Infra
 
 
+
 * Remote State:
 
-keeping terraform.tfstate in local is a problem, 
+* keeping terraform.tfstate in local is a problem, 
 
 * if you lose the data then terraform can't track what happened earlier. It will try to recreate again.
 
@@ -27,7 +28,7 @@ Now where ever we run terraform apply it connects to S3 and avoid the situations
 
 * Variables:
 
-Variables are useful to define values that can be reused across many resources. A central place where a change of value can be reflected everywhere it is used.
+* Variables are useful to define values that can be reused across many resources. A central place where a change of value can be reflected everywhere it is used.
 
 Datatypes of variables in terraform are
 * string
