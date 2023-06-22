@@ -112,11 +112,11 @@ Advantages:
 <br>
 <br>
 
-* Steps to create:
+Steps to create S3 bucket and table in dynamoDB:
 <p>
 
 * Create S3 bucket and name it as For example: timing-remote-state-bucket
-* Create a table in dynamo DB, Table name as: timing-lock for example.
+* Create a table in dynamoDB, Table name as: timing-lock for example.
 * Partition key: LockID
 * Click on Create
 
