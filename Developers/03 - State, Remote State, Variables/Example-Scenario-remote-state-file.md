@@ -61,7 +61,7 @@ Question:
 
 <p>
 
-* Working on state file: Example Scenario
+Working on state file: Example Scenario
 * Infra team, multiple members 
 
 * Every person will contribute some work, we use Git for version control
@@ -109,6 +109,7 @@ Advantages:
 * But if you place the state file in S3, terraform will compare the state with the state file in remote.
 </p>
 
+<br>
 <br>
 
 * Steps to create:
