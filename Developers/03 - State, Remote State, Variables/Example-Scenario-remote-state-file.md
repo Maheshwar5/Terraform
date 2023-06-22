@@ -24,11 +24,11 @@ Agenda:
 
 * If you remove the terraform.tfstate file, it will again recreate. 
 * This is the probelem. It relies on terraform.tfstate file to maintain the change.
+</p>
 
 <br>
 
 Problems:
---------
 <p>
 
 * Keeping terraform.tfstate in local is a problem.
@@ -38,13 +38,11 @@ Problems:
 * In case of version control, keeping the terraform state in Github also causes problem while infra is creating through CI CD.
 
 * The Best practice is to keep the state file in Remote S3 location for better collaboration between team members.
-
+</p>
 
 <br>
 
-
-# Question:
------------
+Question:
 <p>
 
 * Explain the state in terraform?
@@ -55,7 +53,7 @@ Problems:
 * Always you should keep the state file in remote location like S3 and you should lock it with Dynamo DB. 
 
 * In that case, if one person is performing the terraform changes then it'll be locked and another person cannot be able to do any changes. The state is always secured.
-
+</p>
 
 
 
