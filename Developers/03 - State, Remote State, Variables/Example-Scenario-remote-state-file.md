@@ -59,7 +59,6 @@ Question:
 <br>
 <br>
 
-```
 <p>
 * Working on state file: Example Scenario
 * Infra team, multiple members 
@@ -83,11 +82,11 @@ He applied terraform
 
 Engineer - 2
 ------------
-He also applied terraform
+* He also applied terraform
 
+* So, duplication of resources occur. Both Engineers are working in parallel
+</p>
 
-* Duplication of resources occur. Both Engineers are working in parallel
-```
 <br>
 
 * To overcome this,
