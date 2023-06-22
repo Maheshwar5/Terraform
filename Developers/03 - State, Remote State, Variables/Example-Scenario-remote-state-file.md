@@ -67,22 +67,18 @@ Question:
 Every person will contribute some work, we use Git for version control
 
 Engineer - 1
-------------
-He cloned repo
+* He cloned repo
 
 
 Engineer - 2
-------------
-He cloned repo
+* He too cloned the repo
 
 
 Engineer - 1
-------------
-He applied terraform
+* He applied terraform
 
 
 Engineer - 2
-------------
 * He also applied terraform
 
 * So, duplication of resources occur. Both Engineers are working in parallel
