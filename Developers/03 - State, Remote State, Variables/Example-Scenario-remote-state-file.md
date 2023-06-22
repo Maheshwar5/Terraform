@@ -156,6 +156,7 @@ aws_route_table.private-rt: Modifications complete after 0s [id=rtb-08fdbb16a1d9
 $ terraform apply -auto-approve
 ```
 <p>
+
 ```
 │ Error: Error acquiring the state lock
 │
