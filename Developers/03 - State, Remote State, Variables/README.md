@@ -1,5 +1,5 @@
 * State:
-<br>
+<p>
 
 * Terraform is a declarative way of approach. Declarative means whatever you write(declare), you will get the required resources by using proper syntax.
 
@@ -11,11 +11,11 @@
 * Terraform responsibility is to maintain
 
 * Desired Infra = Actual Infra
-<br>
+</p>
 
 
+<p>
 * Remote State:
-<br>
 
 * keeping terraform.tfstate in local is a problem, 
 
@@ -26,10 +26,11 @@
 * It is best practice to keep the state file in remote locations like S3 for better collaboration between team members.
 
 Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
+</p>
 
 
+<p>
 * Variables:
-<br>
 
 * Variables are useful to define values that can be reused across many resources. A central place where a change of value can be reflected everywhere it is used.
 
@@ -65,14 +66,16 @@ variable "tags" {
 }
 ```
 
-<br>
+<p>
 * We use **variables.tf** file to declare variables, we can place default values here. 
 * ** terraform.tfvars ** is the file we declare the default values. We can override variable values from command line using -var "key=value".
+</p>
 
-<br>
+<p>
 * Best Way:
 * Create variables.tf and terraform.tfvars
 * Place default values in variables.tf
 * Override default values using terraform.tfvars. We usually don't commit terraform.tfvars into Git so that 
 users can define their own values.
 * Any variable can be overriden at run time using -var "key=value"
+</p>
