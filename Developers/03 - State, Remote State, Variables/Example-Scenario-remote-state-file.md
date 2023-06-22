@@ -139,11 +139,13 @@ https://developer.hashicorp.com/terraform/language/settings/backends/s3
 
 ```
 $ terraform apply
+```
+<p>
 
 Plan: 0 to add, 1 to change, 0 to destroy.
 aws_route_table.private-rt: Modifying... [id=rtb-08fdbb16a1d9eb297]
 aws_route_table.private-rt: Modifications complete after 0s [id=rtb-08fdbb16a1d9eb297]
-```
+</p>
 
 <br>
 
@@ -152,6 +154,8 @@ aws_route_table.private-rt: Modifications complete after 0s [id=rtb-08fdbb16a1d9
 
 ```
 $ terraform apply -auto-approve
+```
+<p>
 
 │ Error: Error acquiring the state lock
 │
@@ -171,7 +175,7 @@ $ terraform apply -auto-approve
 │ by multiple users at the same time. Please resolve the issue above and try
 │ again. For most commands, you can disable locking with the "-lock=false"
 │ flag, but this is not recommended.
-```
+</p>
 
 * This is the LockID you'll find when someone is working on...
 LockID: timing-remote-state-bucket/timing-md5
