@@ -11,7 +11,7 @@
 * Terraform responsibility is to maintain
 
 * Desired Infra = Actual Infra
-
+<br>
 
 
 * Remote State:
