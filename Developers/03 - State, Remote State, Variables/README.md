@@ -13,9 +13,6 @@ Terraform responsibility is to maintain
 Desired Infra = Actual Infra
 
 
-
-
-
 ### Remote State
 
 keeping terraform.tfstate in local is a problem, 
@@ -27,9 +24,6 @@ keeping terraform.tfstate in local is a problem,
 * It is best practice to keep the state file in remote locations like S3 for better collaboration between team members.
 
 Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
-
-
-
 
 
 #### Variables
@@ -72,7 +66,8 @@ variable "tags" {
 * We use **variables.tf** file to declare variables, we can place default values here. 
 * **terraform.tfvars** is the file we declare the default values. We can override variable values from command line using -var "key=value".
 
-# Best Way:
+* Best Way:
+  --------
 * Create variables.tf and terraform.tfvars
 * Place default values in variables.tf
 * Override default values using terraform.tfvars. We usually don't commit terraform.tfvars into Git so that users can define their own values.
