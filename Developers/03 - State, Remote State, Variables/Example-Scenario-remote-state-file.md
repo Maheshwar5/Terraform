@@ -193,6 +193,7 @@ LockID: timing-remote-state-bucket/timing-md5
 * There will be no changes after he applies. Resources are not duplicated!
 
 <br>
+<br>
 
 Question:
 <p>
