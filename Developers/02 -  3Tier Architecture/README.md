@@ -13,6 +13,14 @@
 
 
 # Workout:
+
+* Project Infrastructure outline:
+- Public subnet, Private subnet, Route Table, IGW are dependent on VPC. 
+
+- Elastic IP is not dependent on any resource. 
+- NAT Gateway is dependent on Elastic IP & IGW. We publish NAT Gateway into the Public subnet.
+
+
 # Session-02: Creating a VPC
 
 This session is about creating VPC through Terraform. One should have basic knowledge of VPC.
@@ -137,6 +145,8 @@ Example: In bank, cashier will be accessing one application, that application is
 
 * Project Infrastructure:
   ----------------------
+
+
 - VPC --> Base for any Cloud Infraastructure (Onpremise Datacentre)
 - VPC is usually a mini cloud, which is isolated from other projects
 - VPC contains --> Subnets, Routes, InternetGateway(Network Conection)
