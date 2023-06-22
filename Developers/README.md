@@ -831,84 +831,52 @@ output "config" {
 </p>
 
 
+<br>
+<br>
 
 
+variables.tf
+* variables.tf --> where you declare variables, you can keep default values
+
+<br>
+<br>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=====================================================================
-# variables.tf
-variables.tf --> where you declare variables, you can keep default values
-
-# terraform.tfvars
-terraform.tfvars --> Here, you can override default values. 
+terraform.tfvars
+* terraform.tfvars --> Here, you can override default values. 
 You should've your own values to the variables, if you don't have your own values, then default values in variables.tf will be applied!
 
-It is user specific. We should gitignore it! (We shouldn't push it to Central Repository)
+* It is user specific. We should gitignore it! (We shouldn't push it to Central Repository)
+
+
+<br>
+<br>
+
+
+Session 05: 
+Count, Conditions, Loops
+
+
+<br>
+<br>
+
+
+Concepts:
+* terraform: terraform basics - working on 03 session
+* terraform-modules
+* timing-infra
 
 
 
 
-
--------------------------------------------------------------------------------
-# session 05: 
-* Count, Conditions, Loops
+<br>
+<br>
 
 
 
--------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-cconcepts:
-- terraform: terraform basics - working on 03 session
-- terraform-modules
-- timing-infra
-
-Just to avoid repeat typing: git add .; git commit -m "Message"; git push origin master
+Just to avoid repeat typing: 
+<p>
+```
+git add .; git commit -m "Message"; git push origin master
+```
+</p>
