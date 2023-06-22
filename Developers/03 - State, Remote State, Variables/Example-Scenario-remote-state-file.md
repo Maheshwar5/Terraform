@@ -156,7 +156,7 @@ aws_route_table.private-rt: Modifications complete after 0s [id=rtb-08fdbb16a1d9
 $ terraform apply -auto-approve
 ```
 <p>
-
+```
 │ Error: Error acquiring the state lock
 │
 │ Error message: ConditionalCheckFailedException: The conditional request
@@ -175,6 +175,7 @@ $ terraform apply -auto-approve
 │ by multiple users at the same time. Please resolve the issue above and try
 │ again. For most commands, you can disable locking with the "-lock=false"
 │ flag, but this is not recommended.
+```
 </p>
 
 * This is the LockID you'll find when someone is working on...
