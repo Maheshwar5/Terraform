@@ -874,7 +874,7 @@ Concepts:
 
 
 
-Just to avoid repeat typing: 
+Just to avoid typing: 
 <p>
 
 ```
