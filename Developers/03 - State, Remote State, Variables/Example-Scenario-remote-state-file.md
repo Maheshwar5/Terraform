@@ -11,10 +11,7 @@ Agenda:
 * Whenver terraform creates infra, it generates file called terraform.tfstate
 
 
-* To track what terraform has created, the status
-
-<br>
-
+* To track what terraform has created, the status is automatically stored in terraform.tfstate
 * terraform.tfstate
 
 
