@@ -66,8 +66,9 @@ variable "tags" {
 * We use **variables.tf** file to declare variables, we can place default values here. 
 * **terraform.tfvars** is the file we declare the default values. We can override variable values from command line using -var "key=value".
 
+
 * Best Way:
-  --------
+  ========
 * Create variables.tf and terraform.tfvars
 * Place default values in variables.tf
 * Override default values using terraform.tfvars. We usually don't commit terraform.tfvars into Git so that users can define their own values.
