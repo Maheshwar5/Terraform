@@ -51,6 +51,7 @@ Creating a VPC
 * Create NAT gateway. NAT gateway has explicit dependency on Internet Gateway.
 
 ![alt text](vpc.jpg)
+
 </p>
 
 <br>
