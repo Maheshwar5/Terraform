@@ -876,6 +876,7 @@ Concepts:
 
 Just to avoid repeat typing: 
 <p>
+
 ```
 git add .; git commit -m "Message"; git push origin master
 ```
