@@ -21,10 +21,12 @@ Example Usage: terraform plan -var "username=Learning-Ocean"
 
 <br>
 <br>
+<br>
 
 Session 02: 
 3Tier Architecture:
 
+<br>
 <br>
 <br>
 
@@ -46,8 +48,6 @@ Terraform responsibility is to maintain
 
 Desired Infra = Actual Infra
 
-
-<br>
 <br>
 
 Remote State
@@ -279,13 +279,9 @@ ami            = "ami-0c55b159cbfafe1f0"
 
 * terraform.tfvars is user specific. We should gitignore it! (We shouldn't push it to Central Repository)
 
-
-
-
-
-
-
-
+<br>
+<br>
+<br>
 
 Session 04: 
 Outputs, Data Sources, Functions
@@ -848,31 +844,24 @@ You should've your own values to the variables, if you don't have your own value
 
 * It is user specific. We should gitignore it! (We shouldn't push it to Central Repository)
 
-
 <br>
 <br>
-
+<br>
 
 Session 05: 
 Count, Conditions, Loops
 
-
 <br>
 <br>
-
+<br>
 
 Concepts:
 * terraform: terraform basics - working on 03 session
 * terraform-modules
 * timing-infra
 
-
-
-
 <br>
 <br>
-
-
 
 Just to avoid typing: 
 <p>
