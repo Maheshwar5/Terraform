@@ -50,7 +50,7 @@ Creating a VPC
 * Create EIP. Here elastic IP is independent resource.
 * Create NAT gateway. NAT gateway has explicit dependency on Internet Gateway.
 
-![alt text](vpc.jpg)
+![alt text](VPC.jpg)
 
 </p>
 
