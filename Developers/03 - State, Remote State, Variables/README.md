@@ -27,7 +27,7 @@
 
 * It is best practice to keep the state file in remote locations like S3 for better collaboration between team members.
 
-Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
+* Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
 </p>
 
 <br>
